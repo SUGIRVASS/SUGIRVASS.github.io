@@ -7,30 +7,102 @@
     <title>Sugirvas Senthilkumar</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
         body {
             margin: 0;
-            height: 100vh;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
             background-color: #000000;
+            color: #00ff00;
 
             display: flex;
             justify-content: center;
             align-items: center;
+
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px;
         }
 
         h1 {
             margin: 0;
-            color: #00ff00;
-
-            font-family: "Courier New", monospace;
             font-size: 48px;
             font-weight: bold;
-
             letter-spacing: 3px;
+        }
+
+        h2 {
+            margin-top: 14px;
+            margin-bottom: 28px;
+
+            font-size: 20px;
+            font-weight: normal;
+            letter-spacing: 6px;
+        }
+
+        .contact {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .contact a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 16px;
+                letter-spacing: 4px;
+            }
+
+            .contact {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>SUGIRVAS SENTHILKUMAR</h1>
+
+    <main class="container">
+
+        <h1>SUGIRVAS SENTHILKUMAR</h1>
+
+        <h2>CYBERSECURITY</h2>
+
+        <p class="contact">
+            EMAIL:
+            <a href="mailto:sugirvas01@gmail.com">
+                sugirvas01@gmail.com
+            </a>
+        </p>
+
+        <p class="contact">
+            PHONE: +91 XXXXXXXXXX
+        </p>
+
+    </main>
+
 </body>
 </html>
