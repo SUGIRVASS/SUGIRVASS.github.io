@@ -11,6 +11,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         html,
         body {
             margin: 0;
@@ -19,24 +23,81 @@
         }
 
         body {
-            min-height: 100vh;
             background-color: #000000;
             color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: fixed;
+            top: 32px;
+            left: 32px;
+
+            display: flex;
+            gap: 26px;
+
+            z-index: 1000;
+
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .navbar a {
+            color: #00aa00;
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            transition:
+                color 0.2s ease,
+                text-shadow 0.2s ease;
+        }
+
+        .navbar a:hover {
+            color: #00ff00;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+        }
+
+        .navbar a.active {
+            color: #00ff00;
+            text-shadow: 0 0 7px rgba(0, 255, 0, 0.45);
+        }
+
+        .navbar a.active::before {
+            content: "> ";
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            min-height: 100vh;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            font-family: "Courier New", Courier, monospace;
+            padding: 100px 30px 60px;
         }
+
+        /* =========================
+           HOME
+        ========================= */
 
         .container {
             text-align: center;
-            padding: 30px;
         }
 
         h1 {
             margin: 0;
+
             font-size: 48px;
             font-weight: bold;
             letter-spacing: 3px;
@@ -66,6 +127,42 @@
         }
 
         /* =========================
+           PLACEHOLDER SECTIONS
+        ========================= */
+
+        .section-content {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .section-title {
+            margin: 0;
+
+            font-size: 30px;
+            letter-spacing: 4px;
+        }
+
+        .section-line {
+            width: 70px;
+            height: 1px;
+
+            background: #00ff00;
+
+            margin-top: 14px;
+
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+        }
+
+        .section-placeholder {
+            margin-top: 28px;
+
+            color: #007700;
+
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* =========================
            DIGITAL CLOCK
         ========================= */
 
@@ -90,15 +187,12 @@
 
             z-index: 1000;
 
-            /* DO NOT ALLOW CLOCK TEXT TO BE SELECTED */
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
 
-            /* prevents long-press text menu on mobile */
             -webkit-touch-callout: none;
 
-            /* always show normal arrow cursor */
             cursor: default;
         }
 
@@ -106,6 +200,7 @@
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
+
             -webkit-touch-callout: none;
 
             cursor: default;
@@ -115,7 +210,9 @@
             font-size: 32px;
             font-weight: bold;
             letter-spacing: 2px;
+
             line-height: 1.1;
+
             margin-bottom: 8px;
         }
 
@@ -125,13 +222,16 @@
 
         .clock-ampm {
             font-size: 16px;
+
             margin-left: 8px;
+
             vertical-align: middle;
         }
 
         .clock-date {
             font-size: 14px;
             letter-spacing: 1px;
+
             color: #7dff7d;
         }
 
@@ -139,7 +239,46 @@
            MOBILE
         ========================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 850px) {
+
+            .navbar {
+                top: 16px;
+                left: 16px;
+
+                gap: 14px;
+
+                max-width: calc(100% - 32px);
+                flex-wrap: wrap;
+            }
+
+            .navbar a {
+                font-size: 10px;
+            }
+
+            .clock-box {
+                top: 70px;
+                right: 12px;
+
+                min-width: 200px;
+
+                padding: 9px 10px;
+            }
+
+            .clock-time {
+                font-size: 22px;
+            }
+
+            .clock-seconds {
+                font-size: 15px;
+            }
+
+            .clock-ampm {
+                font-size: 12px;
+            }
+
+            .clock-date {
+                font-size: 11px;
+            }
 
             h1 {
                 font-size: 32px;
@@ -155,28 +294,8 @@
                 font-size: 14px;
             }
 
-            .clock-box {
-                top: 12px;
-                right: 12px;
-
-                min-width: 210px;
-                padding: 10px 12px;
-            }
-
-            .clock-time {
+            .section-title {
                 font-size: 24px;
-            }
-
-            .clock-seconds {
-                font-size: 16px;
-            }
-
-            .clock-ampm {
-                font-size: 13px;
-            }
-
-            .clock-date {
-                font-size: 12px;
             }
         }
     </style>
@@ -184,7 +303,38 @@
 
 <body>
 
-    <!-- DIGITAL CLOCK -->
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav class="navbar">
+
+        <a href="#home" class="nav-link active">
+            HOME
+        </a>
+
+        <a href="#projects" class="nav-link">
+            PROJECTS
+        </a>
+
+        <a href="#writeups" class="nav-link">
+            WRITEUPS
+        </a>
+
+        <a href="#about" class="nav-link">
+            ABOUT
+        </a>
+
+        <a href="#contact" class="nav-link">
+            CONTACT
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         CLOCK
+    ========================= -->
 
     <div class="clock-box">
 
@@ -217,38 +367,140 @@
     </div>
 
 
-    <!-- MAIN WEBSITE -->
+    <!-- =========================
+         HOME
+    ========================= -->
 
-    <main class="container">
+    <section id="home">
 
-        <h1>
-            SUGIRVAS SENTHILKUMAR
-        </h1>
+        <main class="container">
 
-        <h2>
-            CYBERSECURITY
-        </h2>
+            <h1>
+                SUGIRVAS SENTHILKUMAR
+            </h1>
 
-        <p class="contact">
+            <h2>
+                CYBERSECURITY
+            </h2>
 
-            EMAIL:
+            <p class="contact">
 
-            <a href="mailto:sugirvas01@gmail.com">
-                sugirvas01@gmail.com
-            </a>
+                EMAIL:
 
-        </p>
+                <a href="mailto:sugirvas01@gmail.com">
+                    sugirvas01@gmail.com
+                </a>
 
-        <p class="contact">
-            PHONE: +91 XXXXXXXXXX
-        </p>
+            </p>
 
-    </main>
+            <p class="contact">
+                PHONE: +91 XXXXXXXXXX
+            </p>
+
+        </main>
+
+    </section>
 
 
-    <!-- CLOCK SCRIPT -->
+    <!-- =========================
+         PROJECTS
+    ========================= -->
+
+    <section id="projects">
+
+        <div class="section-content">
+
+            <h2 class="section-title">
+                PROJECTS
+            </h2>
+
+            <div class="section-line"></div>
+
+            <p class="section-placeholder">
+                // PROJECTS WILL BE DEPLOYED HERE
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         WRITEUPS
+    ========================= -->
+
+    <section id="writeups">
+
+        <div class="section-content">
+
+            <h2 class="section-title">
+                WRITEUPS
+            </h2>
+
+            <div class="section-line"></div>
+
+            <p class="section-placeholder">
+                // SECURITY WRITEUPS WILL BE DEPLOYED HERE
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about">
+
+        <div class="section-content">
+
+            <h2 class="section-title">
+                ABOUT
+            </h2>
+
+            <div class="section-line"></div>
+
+            <p class="section-placeholder">
+                // PROFILE INFORMATION WILL BE DEPLOYED HERE
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section id="contact">
+
+        <div class="section-content">
+
+            <h2 class="section-title">
+                CONTACT
+            </h2>
+
+            <div class="section-line"></div>
+
+            <p class="section-placeholder">
+                // CONTACT CHANNELS WILL BE DEPLOYED HERE
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
+
+        /* DIGITAL CLOCK */
 
         function updateClock() {
 
@@ -264,7 +516,6 @@
                 "SAT"
             ];
 
-
             let hours = now.getHours();
 
             const minutes =
@@ -273,54 +524,43 @@
             const seconds =
                 String(now.getSeconds()).padStart(2, "0");
 
-
             const ampm =
                 hours >= 12 ? "PM" : "AM";
-
 
             hours = hours % 12;
 
             hours =
                 hours ? hours : 12;
 
-
             const hourString =
                 String(hours).padStart(2, "0");
-
 
             const day =
                 days[now.getDay()];
 
-
             const date =
                 String(now.getDate()).padStart(2, "0");
-
 
             const month =
                 String(now.getMonth() + 1).padStart(2, "0");
 
-
             const year =
                 now.getFullYear();
-
 
             document
                 .getElementById("clock-hour-minute")
                 .textContent =
                 `${hourString}:${minutes}`;
 
-
             document
                 .getElementById("clock-seconds")
                 .textContent =
                 seconds;
 
-
             document
                 .getElementById("clock-ampm")
                 .textContent =
                 ampm;
-
 
             document
                 .getElementById("clock-date")
@@ -328,10 +568,56 @@
                 `${day} • ${date}/${month}/${year}`;
         }
 
-
         updateClock();
 
         setInterval(updateClock, 1000);
+
+
+        /* ACTIVE NAVIGATION */
+
+        const sections =
+            document.querySelectorAll("section");
+
+        const navLinks =
+            document.querySelectorAll(".nav-link");
+
+        const observer =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            navLinks.forEach((link) => {
+                                link.classList.remove("active");
+                            });
+
+                            const activeLink =
+                                document.querySelector(
+                                    `.nav-link[href="#${entry.target.id}"]`
+                                );
+
+                            if (activeLink) {
+                                activeLink.classList.add("active");
+                            }
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.55
+                }
+
+            );
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
 
     </script>
 
