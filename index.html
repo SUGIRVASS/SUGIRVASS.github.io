@@ -10,7 +10,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             width: 100%;
             min-height: 100%;
@@ -18,13 +19,14 @@
 
         body {
             min-height: 100vh;
-            background: #000000;
+            background-color: #000000;
             color: #00ff00;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             font-family: "Courier New", Courier, monospace;
-            overflow-x: hidden;
         }
 
         .container {
@@ -42,6 +44,7 @@
         h2 {
             margin-top: 14px;
             margin-bottom: 28px;
+
             font-size: 20px;
             font-weight: normal;
             letter-spacing: 6px;
@@ -61,239 +64,52 @@
             text-decoration: underline;
         }
 
-        /* =========================
-           WATCH WRAPPER
-        ========================= */
+        /* DIGITAL CLOCK */
 
-        .watch-wrap {
+        .clock-box {
             position: fixed;
-            top: 26px;
+            top: 24px;
             right: 24px;
-            z-index: 1000;
-            transform: scale(1);
-            transform-origin: top right;
-        }
 
-        .watch-body {
-            position: relative;
-            width: 215px;
-            padding: 10px;
+            background: #050505;
+            border: 1px solid #00ff00;
             border-radius: 10px;
-            background: linear-gradient(180deg, #1d1f22 0%, #0e0f11 100%);
-            border: 2px solid #2f3338;
-            box-shadow:
-                0 0 0 1px #090909,
-                0 8px 22px rgba(0,0,0,0.70);
-        }
 
-        /* fake strap hints */
-        .watch-body::before,
-        .watch-body::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 118px;
-            height: 14px;
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    #111 0 10px,
-                    #181a1d 10px 20px
-                );
-            border-left: 1px solid #2a2d31;
-            border-right: 1px solid #2a2d31;
-            z-index: -1;
-        }
+            padding: 14px 16px;
+            min-width: 260px;
 
-        .watch-body::before {
-            top: -10px;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .watch-body::after {
-            bottom: -10px;
-            border-radius: 0 0 8px 8px;
-        }
-
-        .watch-inner {
-            border-radius: 8px;
-            padding: 7px 8px 8px;
-            background: linear-gradient(180deg, #15171a 0%, #0c0d0f 100%);
-            border: 1px solid #444950;
-            box-shadow: inset 0 0 0 1px #060606;
-        }
-
-        .watch-brand-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2px;
-            margin-bottom: 3px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.4px;
-            line-height: 1;
-        }
-
-        .watch-brand {
-            color: #d9d9d9;
-        }
-
-        .watch-model {
-            color: #e3d14a;
-        }
-
-        .watch-mid-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-            padding: 0 2px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 8px;
-            line-height: 1;
-            letter-spacing: 0.6px;
-        }
-
-        .watch-blue {
-            color: #3fa9ff;
-            font-weight: 700;
-        }
-
-        .watch-red {
-            color: #ff4242;
-            font-weight: 700;
-        }
-
-        .watch-center-label {
-            color: #d5d5d5;
-            flex: 1;
+            color: #00ff00;
             text-align: center;
-            font-size: 8px;
-        }
 
-        .watch-lcd-bezel {
-            position: relative;
-            padding: 6px;
-            border-radius: 5px;
-            background:
-                linear-gradient(180deg, #18202a 0%, #0f1318 100%);
-            border: 1px solid #505861;
             box-shadow:
-                inset 0 0 0 1px #0a0c0f,
-                inset 0 0 8px rgba(255,255,255,0.04);
+                0 0 10px rgba(0, 255, 0, 0.15),
+                0 0 20px rgba(0, 255, 0, 0.05);
+
+            z-index: 1000;
         }
 
-        /* classic F91-W style accent lines */
-        .watch-lcd-bezel::before,
-        .watch-lcd-bezel::after {
-            content: "";
-            position: absolute;
-            left: 8px;
-            right: 8px;
-            height: 2px;
-            border-radius: 2px;
+        .clock-time {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 8px;
         }
 
-        .watch-lcd-bezel::before {
-            top: 4px;
-            background: #3fa9ff;
+        .clock-seconds {
+            font-size: 20px;
         }
 
-        .watch-lcd-bezel::after {
-            bottom: 4px;
-            background: #ff4242;
-        }
-
-        .watch-screen {
-            background:
-                linear-gradient(180deg, #c4d8b6 0%, #a8c291 55%, #95b07f 100%);
-            border: 2px solid #5f665a;
-            border-radius: 2px;
-            padding: 7px 8px 6px;
-            color: #162016;
-            font-family: "Courier New", Courier, monospace;
-            box-shadow:
-                inset 0 0 8px rgba(0,0,0,0.20),
-                0 0 10px rgba(0,255,100,0.07);
-        }
-
-        .screen-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            min-height: 14px;
-        }
-
-        .time-line {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 0;
-            line-height: 1;
-        }
-
-        .time-main {
-            font-size: 42px;
-            font-weight: 700;
-            letter-spacing: -3px;
-        }
-
-        .time-seconds {
+        .clock-ampm {
             font-size: 16px;
-            font-weight: 700;
-            margin-left: 4px;
-            margin-bottom: 4px;
-            letter-spacing: -1px;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
-        .screen-bottom {
-            margin-top: 4px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-
-        .watch-bottom-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 5px;
-            padding: 0 2px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 7px;
-            font-weight: 700;
-            letter-spacing: 0.4px;
-            line-height: 1;
-        }
-
-        .watch-bottom-left {
-            color: #3fa9ff;
-        }
-
-        .watch-bottom-center {
-            color: #ff4242;
-        }
-
-        .watch-bottom-right {
-            color: #ff4242;
-        }
-
-        @media (max-width: 900px) {
-            .watch-wrap {
-                transform: scale(0.88);
-                top: 18px;
-                right: 16px;
-            }
+        .clock-date {
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #7dff7d;
         }
 
         @media (max-width: 700px) {
@@ -311,97 +127,91 @@
                 font-size: 14px;
             }
 
-            .watch-wrap {
-                transform: scale(0.72);
-                top: 10px;
-                right: 8px;
+            .clock-box {
+                top: 12px;
+                right: 12px;
+                min-width: 210px;
+                padding: 10px 12px;
+            }
+
+            .clock-time {
+                font-size: 24px;
+            }
+
+            .clock-seconds {
+                font-size: 16px;
+            }
+
+            .clock-ampm {
+                font-size: 13px;
+            }
+
+            .clock-date {
+                font-size: 12px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="watch-wrap">
-        <div class="watch-body">
-            <div class="watch-inner">
-
-                <div class="watch-brand-row">
-                    <span class="watch-brand">CASIO</span>
-                    <span class="watch-model">F-91W</span>
-                </div>
-
-                <div class="watch-mid-text">
-                    <span class="watch-blue">LIGHT</span>
-                    <span class="watch-center-label">ALARM CHRONOGRAPH</span>
-                    <span class="watch-red">WATER RESIST</span>
-                </div>
-
-                <div class="watch-lcd-bezel">
-                    <div class="watch-screen">
-                        <div class="screen-top">
-                            <span id="watch-day">TH</span>
-                            <span id="watch-date">9-17</span>
-                        </div>
-
-                        <div class="time-line">
-                            <span class="time-main">
-                                <span id="watch-hour">18</span>:<span id="watch-minute">18</span>
-                            </span>
-                            <span class="time-seconds" id="watch-second">46</span>
-                        </div>
-
-                        <div class="screen-bottom">
-                            <span>24H</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="watch-bottom-text">
-                    <span class="watch-bottom-left">MODE</span>
-                    <span class="watch-bottom-center">ALARM ON/OFF</span>
-                    <span class="watch-bottom-right">24H</span>
-                </div>
-
-            </div>
+    <div class="clock-box">
+        <div class="clock-time">
+            <span id="clock-hour-minute">12:00</span>:<span id="clock-seconds" class="clock-seconds">00</span>
+            <span id="clock-ampm" class="clock-ampm">AM</span>
         </div>
+        <div id="clock-date" class="clock-date">MON • 17/09/2026</div>
     </div>
 
     <main class="container">
+
         <h1>SUGIRVAS SENTHILKUMAR</h1>
+
         <h2>CYBERSECURITY</h2>
 
         <p class="contact">
             EMAIL:
-            <a href="mailto:sugirvas01@gmail.com">sugirvas01@gmail.com</a>
+            <a href="mailto:sugirvas01@gmail.com">
+                sugirvas01@gmail.com
+            </a>
         </p>
 
         <p class="contact">
             PHONE: +91 XXXXXXXXXX
         </p>
+
     </main>
 
     <script>
-        function updateWatch() {
+        function updateClock() {
             const now = new Date();
 
-            const days = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
+            const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-            const hours = String(now.getHours()).padStart(2, "0");
+            let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, "0");
             const seconds = String(now.getSeconds()).padStart(2, "0");
 
-            const month = now.getMonth() + 1;
-            const date = now.getDate();
+            const ampm = hours >= 12 ? "PM" : "AM";
 
-            document.getElementById("watch-hour").textContent = hours;
-            document.getElementById("watch-minute").textContent = minutes;
-            document.getElementById("watch-second").textContent = seconds;
-            document.getElementById("watch-day").textContent = days[now.getDay()];
-            document.getElementById("watch-date").textContent = month + "-" + date;
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+
+            const hourString = String(hours).padStart(2, "0");
+
+            const day = days[now.getDay()];
+            const date = String(now.getDate()).padStart(2, "0");
+            const month = String(now.getMonth() + 1).padStart(2, "0");
+            const year = now.getFullYear();
+
+            document.getElementById("clock-hour-minute").textContent = `${hourString}:${minutes}`;
+            document.getElementById("clock-seconds").textContent = seconds;
+            document.getElementById("clock-ampm").textContent = ampm;
+            document.getElementById("clock-date").textContent = `${day} • ${date}/${month}/${year}`;
         }
 
-        updateWatch();
-        setInterval(updateWatch, 1000);
+        updateClock();
+        setInterval(updateClock, 1000);
     </script>
 
 </body>
