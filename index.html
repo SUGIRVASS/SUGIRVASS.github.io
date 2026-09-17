@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Sugirvas Senthilkumar</title>
 
     <style>
@@ -64,7 +65,9 @@
             text-decoration: underline;
         }
 
-        /* DIGITAL CLOCK */
+        /* =========================
+           DIGITAL CLOCK
+        ========================= */
 
         .clock-box {
             position: fixed;
@@ -86,6 +89,26 @@
                 0 0 20px rgba(0, 255, 0, 0.05);
 
             z-index: 1000;
+
+            /* DO NOT ALLOW CLOCK TEXT TO BE SELECTED */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+
+            /* prevents long-press text menu on mobile */
+            -webkit-touch-callout: none;
+
+            /* always show normal arrow cursor */
+            cursor: default;
+        }
+
+        .clock-box * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -webkit-touch-callout: none;
+
+            cursor: default;
         }
 
         .clock-time {
@@ -112,7 +135,12 @@
             color: #7dff7d;
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 700px) {
+
             h1 {
                 font-size: 32px;
                 letter-spacing: 2px;
@@ -130,6 +158,7 @@
             .clock-box {
                 top: 12px;
                 right: 12px;
+
                 min-width: 210px;
                 padding: 10px 12px;
             }
@@ -155,25 +184,59 @@
 
 <body>
 
+    <!-- DIGITAL CLOCK -->
+
     <div class="clock-box">
+
         <div class="clock-time">
-            <span id="clock-hour-minute">12:00</span>:<span id="clock-seconds" class="clock-seconds">00</span>
-            <span id="clock-ampm" class="clock-ampm">AM</span>
+
+            <span id="clock-hour-minute">
+                12:00
+            </span>
+
+            :<span
+                id="clock-seconds"
+                class="clock-seconds">
+                00
+            </span>
+
+            <span
+                id="clock-ampm"
+                class="clock-ampm">
+                AM
+            </span>
+
         </div>
-        <div id="clock-date" class="clock-date">MON • 17/09/2026</div>
+
+        <div
+            id="clock-date"
+            class="clock-date">
+            MON • 17/09/2026
+        </div>
+
     </div>
+
+
+    <!-- MAIN WEBSITE -->
 
     <main class="container">
 
-        <h1>SUGIRVAS SENTHILKUMAR</h1>
+        <h1>
+            SUGIRVAS SENTHILKUMAR
+        </h1>
 
-        <h2>CYBERSECURITY</h2>
+        <h2>
+            CYBERSECURITY
+        </h2>
 
         <p class="contact">
+
             EMAIL:
+
             <a href="mailto:sugirvas01@gmail.com">
                 sugirvas01@gmail.com
             </a>
+
         </p>
 
         <p class="contact">
@@ -182,36 +245,94 @@
 
     </main>
 
+
+    <!-- CLOCK SCRIPT -->
+
     <script>
+
         function updateClock() {
+
             const now = new Date();
 
-            const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+            const days = [
+                "SUN",
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT"
+            ];
+
 
             let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, "0");
-            const seconds = String(now.getSeconds()).padStart(2, "0");
 
-            const ampm = hours >= 12 ? "PM" : "AM";
+            const minutes =
+                String(now.getMinutes()).padStart(2, "0");
+
+            const seconds =
+                String(now.getSeconds()).padStart(2, "0");
+
+
+            const ampm =
+                hours >= 12 ? "PM" : "AM";
+
 
             hours = hours % 12;
-            hours = hours ? hours : 12;
 
-            const hourString = String(hours).padStart(2, "0");
+            hours =
+                hours ? hours : 12;
 
-            const day = days[now.getDay()];
-            const date = String(now.getDate()).padStart(2, "0");
-            const month = String(now.getMonth() + 1).padStart(2, "0");
-            const year = now.getFullYear();
 
-            document.getElementById("clock-hour-minute").textContent = `${hourString}:${minutes}`;
-            document.getElementById("clock-seconds").textContent = seconds;
-            document.getElementById("clock-ampm").textContent = ampm;
-            document.getElementById("clock-date").textContent = `${day} • ${date}/${month}/${year}`;
+            const hourString =
+                String(hours).padStart(2, "0");
+
+
+            const day =
+                days[now.getDay()];
+
+
+            const date =
+                String(now.getDate()).padStart(2, "0");
+
+
+            const month =
+                String(now.getMonth() + 1).padStart(2, "0");
+
+
+            const year =
+                now.getFullYear();
+
+
+            document
+                .getElementById("clock-hour-minute")
+                .textContent =
+                `${hourString}:${minutes}`;
+
+
+            document
+                .getElementById("clock-seconds")
+                .textContent =
+                seconds;
+
+
+            document
+                .getElementById("clock-ampm")
+                .textContent =
+                ampm;
+
+
+            document
+                .getElementById("clock-date")
+                .textContent =
+                `${day} • ${date}/${month}/${year}`;
         }
 
+
         updateClock();
+
         setInterval(updateClock, 1000);
+
     </script>
 
 </body>
